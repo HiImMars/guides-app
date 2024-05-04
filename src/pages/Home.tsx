@@ -1,7 +1,9 @@
+import { MainHome } from "../components/home/MainHome";
+
 export const Home = () => {
   return (
-    <div>
-        Home page
+    <div className="flex justify-center items-center py-20">
+      <MainHome />
     </div>
-  )
-}
+  );
+};
