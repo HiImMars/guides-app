@@ -10,7 +10,7 @@ export const Header = () => {
   };
 
   return (
-    <header className="bg-accentBrown flex items-center gap-10 px-8">
+    <header className="flex items-center gap-10 px-8">
       <GiDiabloSkull className="w-12 h-12 fill-light" />
       <nav className="flex items-center gap-8 text-3xl text-light">
         <NavLink
