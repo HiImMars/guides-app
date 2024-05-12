@@ -1,19 +1,9 @@
-// import { useEffect } from "react";
+import Object from "../3d-object/Object";
 
 export const MainHome = () => {
-  // useEffect(() => {
-  //   const fetchChannels = async () => {
-  //     try {
-  //       const response = await fetch("https://kick.com/api/v1/channels/xqc");
-  //       console.log(response);
-  //       return response;
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-
-  //   fetchChannels();
-  // }, []);
-
-  return <div></div>;
+  return (
+    <div>
+      <Object />
+    </div>
+  );
 };
