@@ -29,6 +29,6 @@ body {
 }
 
 canvas {
-  height: 70vh !important;
-  width: 30vw !important;
+  height: 100vh !important;
+  width: 90vw !important;
 }

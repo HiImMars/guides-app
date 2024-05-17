@@ -1,17 +1,58 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { Suspense } from "react";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { ContactShadows, Environment, OrbitControls } from "@react-three/drei";
 import Warrior from "../../../public/Warrior";
+import * as THREE from "three";
+
+const RotatingWarrior = () => {
+  const warriorRef = useRef<THREE.Group>(null);
+  const [direction, setDirection] = useState(1);
+  const [elapsedTime, setElapsedTime] = useState(0);
+
+  useFrame((state, delta) => {
+    if (warriorRef.current) {
+      warriorRef.current.rotation.y += direction * delta * 0.05; // Adjust the speed as needed
+      setElapsedTime((prevTime) => prevTime + delta);
+      if (elapsedTime >= 10) {
+        setDirection((prevDirection) => -prevDirection);
+        setElapsedTime(0);
+      }
+    }
+  });
+
+  return (
+    <Warrior
+      ref={warriorRef}
+      scale={[3, 3, 3]}
+      rotation={[0, -Math.PI / 1.5, 0]}
+    />
+  );
+};
 
 const Object: React.FC = () => {
   return (
     <>
-      <Canvas>
+      <Canvas className="hidden md:block">
         <ambientLight intensity={2} />
-        <OrbitControls enableZoom={false} />
+        <OrbitControls
+          enableZoom={false}
+          enableRotate={false}
+          // autoRotate
+          // autoRotateSpeed={0.8}
+          makeDefault
+          minPolarAngle={Math.PI / 2.2}
+          maxPolarAngle={Math.PI / 2.2}
+          minAzimuthAngle={-Math.PI / 5}
+          maxAzimuthAngle={Math.PI / 4}
+        />
         <Suspense fallback={null}>
-          <Warrior scale={[3, 3, 3]} />
+          {/* <Warrior
+            ref={warriorRef}
+            scale={[3, 3, 3]}
+            rotation={[0, -Math.PI / 1.7, 0]}
+          /> */}
+          <RotatingWarrior />
         </Suspense>
         <Environment preset="sunset" />
         <ContactShadows

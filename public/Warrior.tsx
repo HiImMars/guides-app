@@ -7,8 +7,56 @@ Source: https://sketchfab.com/3d-models/stylized-wraith-knight-death-warrior-3eb
 Title: Stylized  Wraith Knight / Death Warrior
 */
 
+// import * as THREE from "three";
+// import React, { useRef } from "react";
+// import { useGLTF } from "@react-three/drei";
+// import { GLTF } from "three-stdlib";
+
+// type GLTFResult = GLTF & {
+//   nodes: {
+//     Wraith_Armor_waith_mat_0: THREE.Mesh;
+//     Wraith_Axe_Axe_mat_0: THREE.Mesh;
+//     Wraith_Base_base_Mat_0: THREE.Mesh;
+//   };
+//   materials: {
+//     waith_mat: THREE.MeshStandardMaterial;
+//     Axe_mat: THREE.MeshStandardMaterial;
+//     base_Mat: THREE.MeshStandardMaterial;
+//   };
+//   animations: GLTFAction[];
+// };
+
+// type ContextType = Record<
+//   string,
+//   React.ForwardRefExoticComponent<JSX.IntrinsicElements["mesh"]>
+// >;
+
+// export default function Model(props: JSX.IntrinsicElements["group"]) {
+//   const { nodes, materials } = useGLTF("/warrior.gltf") as GLTFResult;
+//   return (
+//     <group {...props} dispose={null}>
+//       <group scale={0.01}>
+//         <mesh
+//           geometry={nodes.Wraith_Armor_waith_mat_0.geometry}
+//           material={materials.waith_mat}
+//         />
+//         <mesh
+//           geometry={nodes.Wraith_Axe_Axe_mat_0.geometry}
+//           material={materials.Axe_mat}
+//         />
+//         <mesh
+//           geometry={nodes.Wraith_Base_base_Mat_0.geometry}
+//           material={materials.base_Mat}
+//         />
+//       </group>
+//     </group>
+//   );
+// }
+
+// useGLTF.preload("/warrior.gltf");
+
 import * as THREE from "three";
-import React, { useRef } from "react";
+import { forwardRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 
@@ -23,34 +71,32 @@ type GLTFResult = GLTF & {
     Axe_mat: THREE.MeshStandardMaterial;
     base_Mat: THREE.MeshStandardMaterial;
   };
-  animations: GLTFAction[];
 };
 
-type ContextType = Record<
-  string,
-  React.ForwardRefExoticComponent<JSX.IntrinsicElements["mesh"]>
->;
-
-export default function Model(props: JSX.IntrinsicElements["group"]) {
-  const { nodes, materials } = useGLTF("/warrior.gltf") as GLTFResult;
-  return (
-    <group {...props} dispose={null}>
-      <group scale={0.01}>
-        <mesh
-          geometry={nodes.Wraith_Armor_waith_mat_0.geometry}
-          material={materials.waith_mat}
-        />
-        <mesh
-          geometry={nodes.Wraith_Axe_Axe_mat_0.geometry}
-          material={materials.Axe_mat}
-        />
-        <mesh
-          geometry={nodes.Wraith_Base_base_Mat_0.geometry}
-          material={materials.base_Mat}
-        />
+const Warrior = forwardRef<THREE.Group, JSX.IntrinsicElements["group"]>(
+  (props, ref) => {
+    const { nodes, materials } = useGLTF("/warrior.gltf") as GLTFResult;
+    return (
+      <group ref={ref} {...props} dispose={null}>
+        <group scale={0.01}>
+          <mesh
+            geometry={nodes.Wraith_Armor_waith_mat_0.geometry}
+            material={materials.waith_mat}
+          />
+          <mesh
+            geometry={nodes.Wraith_Axe_Axe_mat_0.geometry}
+            material={materials.Axe_mat}
+          />
+          <mesh
+            geometry={nodes.Wraith_Base_base_Mat_0.geometry}
+            material={materials.base_Mat}
+          />
+        </group>
       </group>
-    </group>
-  );
-}
+    );
+  }
+);
 
 useGLTF.preload("/warrior.gltf");
+
+export default Warrior;
