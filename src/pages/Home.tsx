@@ -1,9 +1,11 @@
-import { MainHome } from "../components/home/MainHome";
+import Object from "../components/3d-object/Object";
+import { Greetings } from "../components/greetings/Greetings";
 
 export const Home = () => {
   return (
-    <div className="flex justify-center items-center py-20">
-      <MainHome />
+    <div className="flex flex-col justify-center items-center py-5 relative">
+      <Object />
+      <Greetings />
     </div>
   );
 };

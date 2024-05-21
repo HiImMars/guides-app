@@ -9,7 +9,8 @@ body {
 }
 
 body {
-  color: #262220;
+  /* color: #262220; */
+  color: #f7f1f0;
   font-family: "Titillium Web", sans-serif;
   background: linear-gradient(-45deg, #1e1e2e, #2c2c3c, #162125, #1c262b);
   background-size: 400% 400%;
@@ -29,6 +30,6 @@ body {
 }
 
 canvas {
-  height: 100vh !important;
-  width: 90vw !important;
+  height: 85vh !important;
+  width: 100vw !important;
 }
