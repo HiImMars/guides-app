@@ -2,7 +2,8 @@ import React, { useRef, useState } from "react";
 import { Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { ContactShadows, Environment, OrbitControls } from "@react-three/drei";
-import Warrior from "../../../public/Warrior";
+// import Warrior from "../../../public/Warrior";
+import Knight from "../../../public/Knight";
 import * as THREE from "three";
 
 const RotatingWarrior = () => {
@@ -22,10 +23,10 @@ const RotatingWarrior = () => {
   });
 
   return (
-    <Warrior
+    <Knight
       ref={warriorRef}
-      scale={[3, 3, 3]}
-      rotation={[0, -Math.PI / 1.5, 0]}
+      scale={[0.015, 0.015, 0.015]}
+      rotation={[0, -Math.PI / 10, 0]}
     />
   );
 };
