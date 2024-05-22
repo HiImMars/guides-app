@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import { Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { ContactShadows, Environment, OrbitControls } from "@react-three/drei";
-// import Warrior from "../../../public/Warrior";
 import Knight from "../../../public/Knight";
 import * as THREE from "three";
 
@@ -39,20 +38,16 @@ const Object: React.FC = () => {
         <OrbitControls
           enableZoom={false}
           enableRotate={false}
+          enablePan={false}
           // autoRotate
           // autoRotateSpeed={0.8}
           makeDefault
-          minPolarAngle={Math.PI / 2.2}
-          maxPolarAngle={Math.PI / 2.2}
+          minPolarAngle={Math.PI / 2.32}
+          maxPolarAngle={Math.PI / 2.32}
           minAzimuthAngle={-Math.PI / 5}
           maxAzimuthAngle={Math.PI / 4}
         />
         <Suspense fallback={null}>
-          {/* <Warrior
-            ref={warriorRef}
-            scale={[3, 3, 3]}
-            rotation={[0, -Math.PI / 1.7, 0]}
-          /> */}
           <RotatingWarrior />
         </Suspense>
         <Environment preset="sunset" />
