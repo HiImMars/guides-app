@@ -1,5 +1,3 @@
-import React from "react";
-
 export const Greetings = () => {
   return (
     <div className="flex flex-col justify-center items-center absolute left-1/3 bottom-1/3">

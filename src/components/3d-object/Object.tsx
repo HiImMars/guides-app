@@ -12,6 +12,7 @@ const RotatingWarrior = () => {
 
   useFrame((state, delta) => {
     if (warriorRef.current) {
+      console.log(state);
       warriorRef.current.rotation.y += direction * delta * 0.05; // Adjust the speed as needed
       setElapsedTime((prevTime) => prevTime + delta);
       if (elapsedTime >= 10) {
